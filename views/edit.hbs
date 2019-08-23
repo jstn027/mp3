@@ -1,0 +1,161 @@
+
+<style>
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.container-form{
+    
+width: 100%;
+background: rgba(0,0,0,0.4);
+padding: 2% 5%;
+flex-grow: 1;
+}
+h2 {    
+    color:white;
+    text-align: center;
+    margin: 0 0 20px 0;
+    font-size: 30px;
+}
+.form-input, .form-text-area{
+    
+    width: 100%;
+    padding: 2% 1%;
+    margin: 2% 0;
+    border: none;
+}
+
+.form-text-area{
+    height: 400px;
+}
+.boton{
+    margin-left:10px;
+    float:right;
+    background-color: orange;
+    border: none;
+    color: white;
+    padding: 4px;
+}
+.boton:hover{
+    background-color: #E09409;
+}
+
+.main-column{
+    background-color: #BD4C1F;
+    color: white;
+    padding: 2%;
+    flex-grow: 1
+
+}
+footer{
+    color: white;
+    background-color: black;
+    min-height: 15%;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+@media screen and (min-width: 1024px){
+    .container{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-content: space-between;
+
+    }
+    .container-form, .main-column{
+        margin-top: 5%;
+    }
+    .container-form{
+        width: 450px;
+        height: 580px;
+        padding: 1% 2%;
+        flex-shrink: 0;
+        flex-grow: 0;
+    }
+
+    .main-column{
+        width: 300px;
+        height: 380px;
+        flex-shrink: 0;
+        flex-grow: 0;
+    }
+    footer{
+        align-content: flex-end;
+        width: 100%;
+        
+    }
+}
+    
+</style><img class="bg" src="../images/Ville-d'Avray.jpg">
+<script>
+$(document).ready(function(){
+$("button.boton").click(function(){
+        console.log("Delete")
+        let poemid = $(this).attr("data-id")
+        console.log(poemid)
+        $("#deleteid").val(poemid)
+        $("#deleteform").submit()
+    })
+    });
+    
+</script>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/home">PO3T</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{username}}
+            </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/profile">My Profile</a>
+                  <a class="dropdown-item" href="/logout">Logout</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/compose">Post a new poem</a>
+              </div>
+      </li>
+    </ul>
+    <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search a title..." aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      {{!-- <a class="nav-item dropdown">
+            
+      </a> --}}
+  </div>
+</nav>
+
+<div class="container">
+    <div class="container-form">
+        <form action="update" method="post">
+	        <h2>UPDATE YOUR POEM</h2>
+	        <input class="form-input" type="text" name="title" value="{{poem.title}}">
+	        <textarea class="form-text-area" name="content">{{poem.content}}</textarea>
+            <input type="hidden" name="id" id="editid" value="{{poem._id}}">
+	        <input class="boton" id="boton" type="submit" value="Update">
+        </form>
+        
+        <form id = "deleteform" action = "delete" method="post">
+			<input type="hidden" name="id" id = "deleteid">
+		</form>
+        
+        <button class="boton" data-id="{{poem._id}}">Delete</button>
+<!--
+        <form action="delete" method="post">
+        <input class="boton" id="boton" type="submit" value="Delete">
+        </form>
+-->
+    </div>
+       	
+            
+        </div>

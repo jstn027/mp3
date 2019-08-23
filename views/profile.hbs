@@ -1,0 +1,126 @@
+<script>
+    $(document).ready(function(){
+$("a.nav-click").click(function(){
+        console.log("EDIT")
+        let poemid = $(this).attr("data-id")
+        console.log(poemid)
+        $("#editid").val(poemid)
+        $("#editform").submit()
+    })
+        
+        $("button.editinfo").click(function(){
+        $("#infoid").val(req.session._id)
+        $("#infoform").submit()
+    })
+        
+    });
+</script>
+<style>
+.container{
+    margin-top:30px;
+    background-color: lightgray;
+    }
+    .nav-click{
+        color:black;
+    }
+</style>
+<img class="bg" src="../images/Ville-d'Avray.jpg">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/home">PO3T</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{username}}
+            </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/profile">My Profile</a>
+                  <a class="dropdown-item" href="/logout">Logout</a>
+              </div>
+      </li>
+    </ul>
+    <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search a Title" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      {{!-- <a class="nav-item dropdown">
+            
+      </a> --}}
+  </div>
+</nav>
+
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-8">
+        <h1>{{fullname}}</h1>
+    </div>
+      
+      <form id = "infoform" action = "info">
+          <input type="hidden" name="id" id = "infoid">
+		</form>
+      
+    
+    <div class="col-sm-4">
+<!--
+        <form id = "editform" action = "edit">
+			<input type="hidden" name="id" id = "editid">
+            <input type="button" class="btn btn-outline-dark" value="Edit Profile">
+        </form>
+-->
+        <a  href="/info" class="btn btn-outline-dark" id="editinfo" data-id="{{req.session._id}}">Edit Profile</a>
+    </div>
+      
+      
+     <form id = "editform" action = "edit">
+			<input type="hidden" name="id" id = "editid">
+        </form>
+      
+  </div>
+  <hr>
+
+  <div class="row">
+      <div class="col-3">
+        <div class="row">
+          List of Works
+        </div>
+          
+           
+          
+        <div class="row">
+          <ul>
+              {{#each poems}}
+            <li class="nav-item">
+                <div class="nav-link">
+                    <a  href="#" class="nav-click" data-id="{{_id}}">{{title}}</a>
+                </div>
+            </li>
+              {{/each}}
+<!--
+            <li class="nav-item">
+              <a class="nav-link" href="#">Love letter to CS</a>
+            </li><li class="nav-item">
+              <a class="nav-link" href="#">Pre rush B</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">oh wow!</a>
+            </li><li class="nav-item">
+              <a class="nav-link" href="#">Bakit di ka crush ng crush mo</a>
+            </li>
+-->
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-9">
+        Brief Info:<br>
+        {{info}}
+      </div>
+  </div>
+</div>
+
+

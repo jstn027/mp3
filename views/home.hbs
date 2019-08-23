@@ -1,0 +1,110 @@
+{{!-- 
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="navbar-brand mx-auto" href="#">PO3T</a>  
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+        </ul>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{username}}
+            </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">My Profile</a>
+                  <a class="dropdown-item" href="#">Logout</a>
+                </div>
+          </li>
+        </ul>
+    </div>
+</nav>
+ --}}
+<style>
+.postContainer{
+    margin-bottom:15px;
+    }
+</style>
+<img class="bg" src="../images/Ville-d'Avray.jpg">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/home">PO3T</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{username}}
+            </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/profile">My Profile</a>
+                  <a class="dropdown-item" href="/logout">Logout</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/compose">Post a new poem</a>
+              </div>
+      </li>
+    </ul>
+    <form class="form-inline" method="get" action="search">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search a Title" aria-label="Search" name="searchval">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      {{!-- <a class="nav-item dropdown">
+            
+      </a> --}}
+  </div>
+</nav>
+<script>
+   $(document).ready(function(){
+$("a.far fa-heart").click(function(){
+        console.log("EDIT")
+        let poemid = $(this).attr("data-id")
+        console.log(poemid)
+        $("#infoid").val(poemid)
+        $("#infoform").submit()
+    })
+   })
+</script>
+
+<div class="container">
+{{#each poems}}
+  <div class="postContainer">
+    <div class="post Header">
+      <h2>{{title}}</h2>
+      <p>By {{author}}, posted on August 19, 2019</p>
+    </div>
+    <hr>
+    <div class="postContent">
+      <p>{{content}}</p>
+    </div>
+    <hr>
+    <div class="postFooter">
+      <div class="row">
+          
+          <form id = "infoform" action = "addlikes">
+          <input type="hidden" name="id" id = "infoid">
+		</form>
+          
+        <div class="col-1">
+            <a data-id="{{_id}}"href="#" class="far fa-heart"></a>
+<!--            <i class="far fa-comment"></i>-->
+        </div>
+      </div>
+    </div>
+    
+  </div>
+{{/each}}
+  <div>
+
+  </div>
+</div>
+

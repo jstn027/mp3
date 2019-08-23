@@ -1,0 +1,183 @@
+<html>
+    <head>
+        <style>
+@import url(https://fonts.googleapis.com/css?family=Poppins:400,700,300);
+
+body {
+  font-family: 'Poppins', sans-serif;
+    background: skyblue;
+}
+
+.bodycontent{
+                width: 500px;
+                margin: auto;
+                background: lightgray;
+                box-shadow: 15px 15px 15px lightblue;
+            }
+            
+ .content{
+                align-content: center;
+                padding: 20px;
+            }
+    .poem-content{
+                align-content: center;
+            }
+.site-header {
+  background-color: #1D1F20;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  font-size: 0.9em;
+}
+
+.logo {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.2em;
+  margin: 0px 30px 0px 10px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  
+}
+
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav a {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  padding: 20px;
+  display: inline-block;
+}
+
+.site-nav .active a {
+  color: #F89406;
+  font-weight: bold;
+  background: #000;
+}
+
+.site-nav ul li:hover {
+  background: rgba(52,52,54,0.6);
+}
+
+.settings-dropdown {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 35px;
+}
+
+.settings-dropdown:before {
+    content:"";
+    position: absolute;
+    right: 43px;
+    top: -10px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 10px 10px 10px;
+    border-color: transparent transparent #fff transparent;
+    z-index:9999;
+}
+
+
+.account-actions {
+  margin-left: auto;
+  display: flex;
+  margin-right: 10px;
+}
+
+.account-dropdown a{
+  color: #fff;
+  text-decoration: none;
+}
+
+.settings-symbol {
+  font-size: 1.4em;
+  margin-right: 5px;
+}
+
+.settings-dropdown > li {
+  list-style: none;
+}
+
+.settings-dropdown li a {
+	display: block;
+	background: #F8F8F8;
+	width: 200px;
+	height: 40px;
+	padding: 0 0 0 10px;
+	font: bold 13px Helvetica, sans-serif;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: rgba(0, 0, 0, 0.5);
+	line-height: 40px;
+	box-shadow: 0 1px 1px rgba( 0, 0, 0, 0.2 );
+}
+
+.settings-dropdown li a:hover { 
+  color: #555; 
+}
+
+
+@media (max-width: 600px) {
+  .site-header {
+    flex-wrap: wrap;
+  }
+  
+  .site-nav {
+    order: 2;
+    width: 100%;
+    background:#414143;
+  }
+}
+        </style>
+    </head>
+    <script>
+$(document).ready(function(){
+    
+  $(".settings-symbol").click(function(e){
+        $(".settings-dropdown").fadeToggle();
+        e.stopImmediatePropagation();
+    });
+  $('html').click(function (e) {
+    if($(".settings-dropdown").is(":visible") && !$("div").is(e.target)) {
+        $(".settings-dropdown").fadeOut("fast");
+    }
+    });
+});
+    
+</script>
+    <body>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<header class="site-header">
+  <a href="#" class="logo">P03T</a>
+  <nav class="site-nav">
+    <ul>
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Profile</a></li>
+      <li><a href="#">Search</a></li>
+    </ul>   
+  </nav>
+  <div class="account-actions">
+    <div class="account-dropdown">
+      <a href="#" class="sign-out-link">Sign Out</a>
+    </div>
+  </div>
+</header>
+ <div class="bodycontent">
+     <ul type="none" class="content">
+        <li>Title</li>
+        <li>Author</li>
+        <li class="poem-content">Content</li>
+        <li class="poem-content"><button>Delete</button></li>
+     </ul>
+    </div>
+</body>
+</html>

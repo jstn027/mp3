@@ -1,0 +1,113 @@
+  <style>
+
+  </style>
+
+  <img class="bg" src="../images/Ville-d'Avray.jpg">
+  
+  <div class="container1">
+    <div class="backbox">
+      <div class="loginMsg">
+        <div class="textcontent">
+          <p class="title">Don't have an account?</p>
+          <p>Sign up to save all your graph.</p>
+          <button class="btn btn-outline-light btn-sm" id="switch1">Sign Up</button>
+        </div>
+      </div>
+      <div class="signupMsg visibility">
+        <div class="textcontent">
+          <p class="title">Have an account?</p>
+          <p>Sign in to see all your collection.</p>
+          <button class="btn btn-outline-light btn-sm" id="switch2">Sign in</button>
+        </div>
+      </div>
+    </div>
+    <!-- backbox -->
+
+    <div class="frontbox">
+      <div class="login">
+        <h2>Sign in</h2>
+        <form class="inputbox" action="login" method="post">
+
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" name="un" id="username" aria-describedby="emailHelp" placeholder="Enter username">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" name="pw" id="exampleInputPassword1" placeholder="Password">
+        </div>
+          <input class="btn btn-outline-dark btn-block" type="submit" value="Log in">
+        </form>
+
+        {{!-- <p>FORGET PASSWORD?</p>
+        
+        <button>SIGN IN</button> --}}
+      </div>
+
+      <div class="signup hide">
+        <h2>Sign up</h2>
+        {{!-- <form class="inputbox" action="register" method="post">
+<!--          <input type="text" name="fullname" placeholder="  FULLNAME">-->
+          <input type="text" name="un" placeholder="  USERNAME">
+          <input type="password" name="pw" placeholder="  PASSWORD">
+          <input class="button" type="submit" value="register">
+        </form> --}}
+
+        <form class="inputbox" action="register" method="post">
+
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" name="un" id="username" aria-describedby="emailHelp" placeholder="Enter username">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" name="pw" id="exampleInputPassword1" placeholder="Password">
+        </div>
+
+        {{!-- <div class="form-group">
+          <label for="cPass">Confirm Password</label>
+          <input type="password" class="form-control" name="pw" id="cPass" placeholder="Confirm Password">
+        </div> --}}
+
+          <input class="btn btn-outline-dark btn-block" type="submit" value="Register">
+        </form>
+<!--        <button>SIGN UP</button>-->
+      </div>
+
+    </div>
+    <!-- frontbox -->
+  </div>
+</body>
+<script>
+ var $loginMsg = $('.loginMsg'),
+  $login = $('.login'),
+  $signupMsg = $('.signupMsg'),
+  $signup = $('.signup'),
+  $frontbox = $('.frontbox');
+
+$('#switch1').on('click', function() {
+  $loginMsg.toggleClass("visibility");
+  $frontbox.addClass("moving");
+  $signupMsg.toggleClass("visibility");
+
+  $signup.toggleClass('hide');
+  $login.toggleClass('hide');
+})
+
+$('#switch2').on('click', function() {
+  $loginMsg.toggleClass("visibility");
+  $frontbox.removeClass("moving");
+  $signupMsg.toggleClass("visibility");
+
+  $signup.toggleClass('hide');
+  $login.toggleClass('hide');
+})
+
+setTimeout(function(){
+  $('#switch1').click()
+},1000)
+
+setTimeout(function(){
+  $('#switch2').click()
+},3000)
+    </script>
